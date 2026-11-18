@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Article creation manifest row",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file": {
+      "type": "string",
+      "pattern": "^wiki(?:-pages)?/[^/\\\\:]+\\.wiki$"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "title",
+    "page",
+    "file",
+    "summary"
+  ],
+  "additionalProperties": false
+}

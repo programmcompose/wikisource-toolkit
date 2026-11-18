@@ -1,0 +1,10 @@
+{
+  "name": "wikisource-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ProofreadPage, OCR review and Wikisource batch publishing tools",
+  "license": "MIT",
+  "scripts": {
+    "demo": "bun examples/demo.ts"
+  }
+}

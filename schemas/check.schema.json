@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "ProofreadPage transclusion check row",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "ready",
+            "local_pass"
+          ]
+        },
+        "plan": {
+          "type": "object",
+          "properties": {
+            "index": {
+              "type": "string",
+              "minLength": 1
+            },
+            "from": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "to": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "section": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "index",
+            "from",
+            "to",
+            "section"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "status",
+        "plan"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "held"
+        },
+        "code": {
+          "enum": [
+            "no_pages",
+            "multiple_indexes",
+            "nonconsecutive_pages",
+            "nested_section",
+            "invalid_section_tag",
+            "invalid_section_start",
+            "duplicate_section_end",
+            "section_end_mismatch",
+            "invalid_section_order",
+            "text_outside_section",
+            "section_not_found",
+            "stale_snapshot",
+            "weak_section",
+            "duplicate_title",
+            "heading_mismatch",
+            "possible_signature",
+            "section_text_mismatch",
+            "render_mismatch"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "status",
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "skipped"
+        },
+        "code": {
+          "enum": [
+            "exists",
+            "blocked",
+            "review",
+            "unproofread_or_missing_pages"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "status",
+        "code"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

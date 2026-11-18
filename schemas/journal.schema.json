@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Article creation journal row",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "enum": [
+        "created",
+        "exists",
+        "stopped"
+      ]
+    },
+    "at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revid": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "response": {}
+  },
+  "required": [
+    "title",
+    "result",
+    "at"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "result": {
+            "const": "created"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "revid"
+        ]
+      }
+    }
+  ]
+}
